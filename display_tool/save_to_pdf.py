@@ -6,8 +6,16 @@ from matplotlib.backends.backend_pdf import PdfPages
 from strip_creation import create_a_strip
 from functions import false_if_not_image, delete_none_image
  
-def plot_strides_into_pdf(inputs_folder_path:str, pdf_output_path=None):
-    ''''''
+def plot_stripes_into_pdf(inputs_folder_path:str, pdf_output_path:str = None):
+    """This function will parse the inputs folder and for each image 
+        (i) create the result strip thanks to strip_creation.py 
+        (ii) save this strip into a new page of a PDF results
+        (iii) save the PDF asa it reaches 50 pages
+
+    Args:
+        inputs_folder_path (str): path to the inputs directory
+        pdf_output_path (str, optional): _description_. Defaults to None.
+    """
 
     all_input_images = delete_none_image(os.listdir(inputs_folder_path))
 

@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 from strip_creation import create_a_strip
 from save_to_pdf import plot_strides_into_pdf
 from image_utils import central_crop, zooming_crop
-from functions import is_image, neighbor_dirs, get_restored_images_paths, n_images_folder, delete_none_image
+from functions import *
 
 # ---------- ARGUMENTS PARSING -----------------------------------------------------------------------
 
