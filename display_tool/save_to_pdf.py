@@ -29,12 +29,7 @@ def plot_stripes_into_pdf(inputs_folder_path:str, pdf_output_path:str = None):
     n_pages_max = 50
     n_pdf_total = (N//n_pages_max+1)
     
-    while n_pdf < n_pdf_total:
-
-        if n_pdf <= 23:
-            n_pdf += 1
-            print(f'Skipping pdf number {n_pdf-1}\n')
-            continue
+    while n_pdf < n_pdf_total+1:
 
         n_pages = 0
 
@@ -44,7 +39,7 @@ def plot_stripes_into_pdf(inputs_folder_path:str, pdf_output_path:str = None):
 
         print(f'Start writting pdf number {n_pdf}')
 
-        while (n_pages < n_pages_max) and (n_pdf*n_pages_max+n_pages < N):
+        while (n_pages < n_pages_max) and ((n_pdf-1)*n_pages_max+n_pages < N):
 
             image_number = (n_pdf - 1)*50 + n_pages
 

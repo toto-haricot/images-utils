@@ -17,7 +17,7 @@ def all_equal(iterable):
 
 def is_image(an_image:str):
     '''This function will return True / False if the path to image given in arg rpz an image'''
-    extensions = ['.png', '.jpg', '.jpeg']
+    extensions = ['.png', '.jpg', '.JPG', '.jpeg']
     if os.path.splitext(an_image)[1] in extensions:
         return True
     return False
@@ -45,7 +45,7 @@ def is_there_rotated_image(images_shapes:list):
 # ----------------------------------------------------------------------------------------------------
 
 def false_if_not_image(a_file:str):
-    extensions = ['.png', '.jpg', '.jpeg']
+    extensions = ['.png', '.jpg', '.JPG', '.jpeg']
     if os.path.splitext(a_file)[1] in extensions:
         return a_file
     return(False)
