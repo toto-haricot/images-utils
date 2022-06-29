@@ -2,7 +2,6 @@ import os
 import cv2
 
 import numpy as np
-# import matplotlib.pyplot as plt
 
 from itertools import groupby
 from image_utils import central_crop, draw_text_on_image, zooming_crop
@@ -21,6 +20,7 @@ def is_image(an_image:str):
     if os.path.splitext(an_image)[1] in extensions:
         return True
     return False
+    
 # ----------------------------------------------------------------------------------------------------
 
 def is_there_rotated_image(images_shapes:list):
@@ -44,14 +44,6 @@ def is_there_rotated_image(images_shapes:list):
 
 # ----------------------------------------------------------------------------------------------------
 
-def false_if_not_image(a_file:str):
-    extensions = ['.png', '.jpg', '.JPG', '.jpeg']
-    if os.path.splitext(a_file)[1] in extensions:
-        return a_file
-    return(False)
-
-# ----------------------------------------------------------------------------------------------------
-
 def n_images_folder(my_folder_path:str, is_image_function):
     '''This function counts the number of images present in a given folder'''
 
@@ -69,9 +61,9 @@ def n_images_folder(my_folder_path:str, is_image_function):
 # ----------------------------------------------------------------------------------------------------
 
 def delete_none_image(images_list:str, print_n_deleted=False):
-    is_an_images_list = list(map(false_if_not_image, images_list))
+    is_an_images_list = list(map(is_image, images_list))
     all_images_list = [i for i in is_an_images_list if i != False]
-    if print_n_deleted == True : 
+    if print_n_deleted: 
         n_images_deleted = len(is_an_images_list) - len(all_images_list)
         print(f'function delete_none_image deleted {n_images_deleted} file(s)')
     return(all_images_list)
