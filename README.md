@@ -10,3 +10,5 @@ More information is available in **display_tool/readme.md**
 
 - **central_crop.py** : This python file enables to central crop all images in a given input folder if their shapes exceed a certain width and height. The cropped images are saved into the given output directory. 
 It can be used thanks to `python central_crop.py --folder_path *path/to/images* --output_dir *path/to/folder/to/save/images* --width_max *maximum_width* --height_max *maximum_height*`
+
+- **IQA/** (repository) : In this repository you will find several scripts for Image Quality Assessment. 
