@@ -48,23 +48,3 @@ def ycbcr_to_rgb(image_ycbcr : np.array):
 
 # --------------- IMAGE EDITING -----------------------------------------------------------------------
 
-def draw_text_on_image(img, text, pos=(20,20), font=cv2.FONT_HERSHEY_DUPLEX, 
-                       font_scale=2, font_thickness=5, text_color=(10,10,10), 
-                       text_color_bg=(255,255,255), text_bg_transparency=None):
-    
-    x, y = pos
-    text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
-    text_w, text_h = text_size
-    
-    # if text_bg_transparency:
-    #     holes = np.zeros_like(img)
-    #     cv2.rectangle(img, (x - text_w, y - text_h), (x + text_w, y + text_h), text_color_bg, -1)
-    #     cv2.rectangle(holes, (x - text_w, y - text_h), (x + text_w, y + text_h), (255,255,255), -1)
-    #     mask = holes.astype(bool)
-    #     img[mask] = cv2.addWeighted(img, text_bg_transparency, holes, 1-text_bg_transparency, 0)[mask]
-
-    # else: 
-    
-    # cv2.rectangle(img, (x - text_w, y - text_h), (x + text_w, y + text_h), text_color_bg, -1)
-
-    cv2.putText(img, text, (x - text_w//2, y + text_h//2 + font_scale - 1), font, font_scale, text_color, font_thickness)
