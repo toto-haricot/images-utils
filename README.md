@@ -16,4 +16,10 @@ More information is available in **display_tool/readme.md**
 
 :pencil2:`python central_crop.py --folder_path *path/to/images* --output_dir *path/to/folder/to/save/images* --width_max *maximum_width* --height_max *maximum_height*`
 
+- :three_button_mouse: **draw_rectangle.py** : 
+
+:pencil2:`python
+
 - :chart_with_upwards_trend: **histogram_equalization.py** : to enhance the contrast of an image, equalizing its histogram might be a good alternative. This script will output an histogram equalized image corresponding to the given input
+
+:pencil2: `python histogram_equalization.py --image_path *path/to/image*`
