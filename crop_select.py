@@ -41,10 +41,21 @@ def draw_rectangle(event, x, y, flags, params):
 
             cv2.rectangle(img, points[0], points[1], (0, 0, 255), thickness)
             print('------------------------------')
-            print(f'Plotting rectangle between {points[0]} and {points[1]}')
+            print(f'Cropping will be done between {points[0]} and {points[1]}')
             print('------------------------------')
-            cv2.imshow('image_with_rectangle',img)
-            if cv2.imwrite(os.path.join(folder_path, image_output_name), img):
+            cv2.imshow('image_with_cropping_zone',img)
+
+            x1, y1 = points[0]
+            x2, y2 = points[1]
+
+            if x1 > x2: x1, x2 = x2, x1
+            if y1 > y2: y1, y2 = y2, y1
+
+            img_cropped = img[y1+thickness:y2-thickness,x1+thickness:x2-thickness,:]
+
+            cv2.imshow('image_cropepd',img_cropped)
+
+            if cv2.imwrite(os.path.join(folder_path, image_output_name), img_cropped):
                 print(f'Image with rectangle saved as {image_output_name}')
             print('Please hit ESC to quit and save image_with_rectangle')
 
@@ -59,7 +70,7 @@ if __name__ == '__main__':
     image_name = os.path.basename(image_path)
     folder_path = os.path.dirname(image_path)
     image_bs, image_ext = os.path.splitext(image_name)
-    image_output_name = image_name + '_rectangle' + image_ext
+    image_output_name = image_name + '_cropped' + image_ext
 
     points = []
 
