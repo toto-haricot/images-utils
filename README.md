@@ -9,7 +9,7 @@ In this repository you will find the following python scripts :
 `python display_tool/display_tool.py --inputs_folder *path/to/inputs* --output_pdf_path *path/to/folder/for/pdf/printing*`</br></br>
 
 
-- **IQA/** : In this repository you will find several scripts for Image Quality Assessment. 
+- **IQA/** : In this repository you will find several scripts for Image Quality Assessment. </br></br>
 
 - **crop_central.py** : This python file enables to central crop all images in a given input folder if their shapes exceed a certain width and height. The cropped images are saved into the given output directory. 
 
