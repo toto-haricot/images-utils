@@ -1,4 +1,4 @@
-# images_utils :hammer_and_wrench:
+# images_utils  :hammer_and_wrench:
 
 This package provides functionalities to ease images handling for computer vision projects, written in python.  
 
