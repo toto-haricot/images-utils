@@ -42,7 +42,7 @@ def central_crop(image, width_max:int, height_max:int):
     
 def draw_text_on_image(img, text, pos=(20,20), 
                        font=cv2.FONT_HERSHEY_DUPLEX, font_scale=2, font_thickness=2,
-                       text_color=(0,0,0), text_color_bg=(255,255,255)):
+                       text_color=(0,255,0), text_color_bg=(255,255,255)):
     
     x, y = pos
     text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
