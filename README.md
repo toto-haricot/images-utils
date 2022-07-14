@@ -4,7 +4,7 @@ This package provides functionalities to ease images handling for computer visio
 
 In this repository you will find the following python scripts : 
 
-## modules 📦
+## repositories 📦
 
 - 📁 **display_tool/** : This tool aims to help visualizing the outputs of some algorithms along with the corresponding inputs. It is especially usefull for benchmarks. More information is available in **display_tool/readme.md**. </br></br>
 
