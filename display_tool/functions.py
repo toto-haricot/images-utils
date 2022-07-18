@@ -1,3 +1,6 @@
+"""This module provides useful functions operating in the display_tool
+"""
+
 import os
 import cv2
 
@@ -9,14 +12,29 @@ from image_utils import central_crop, draw_text_on_image, zooming_crop
 # ----------------------------------------------------------------------------------------------------
 
 def all_equal(iterable):
+    """This function will tell if every element of an iterable are equal or not
+
+    Args:
+        iterable (_type_): list, dict, tuple, set
+
+    Returns:
+        boolean: True or False depending if all elements are equal or not
+    """
     g = groupby(iterable)
     return next(g, True) and not next(g, False)
 
 # ----------------------------------------------------------------------------------------------------
 
 def is_image(an_image:str):
-    '''This function will return True / False if the path to image given in arg rpz an image'''
-    extensions = ['.png', '.jpg', '.JPG', '.jpeg']
+    '''This function will return True or False if the path to a given image given represents an image or not
+    
+    Args:
+        an_image (str): the path or basename of a file
+
+    Returns:
+        boolean: True or False depending if the image ends with '.png', '.jpg', '.JPG', '.jpeg' or '.JPEG'
+    '''
+    extensions = ['.png', '.jpg', '.JPG', '.jpeg', '.JPEG']
     if os.path.splitext(an_image)[1] in extensions:
         return True
     return False
@@ -24,10 +42,10 @@ def is_image(an_image:str):
 # ----------------------------------------------------------------------------------------------------
 
 def is_there_rotated_image(images_shapes:list):
-    """This function will tell if in a given list of shapes there is any rotated image or not
+    """This function will tell if in a given list of shapes there is any rotated image or not. 
 
     Args:
-        images_shapes (list): A list of RGB images shapes that should have the following format
+        images_shapes (list): A list of RGB images shapes
 
     Returns:
         Boolean: True or False depending on if a rotated image is found or not
@@ -45,18 +63,24 @@ def is_there_rotated_image(images_shapes:list):
 # ----------------------------------------------------------------------------------------------------
 
 def n_images_folder(my_folder_path:str, is_image_function):
-    '''This function counts the number of images present in a given folder'''
+    """This function counts the number of images present in a given folder. It only detects images that ends with '.png', '.jpg', '.JPG', '.jpeg' or '.JPEG'
+
+    Args:
+        my_folder_path (str): path to folders in which we want to count the number of images
+        is_image_function (bool): function used to assess if a file is an image or not
+
+    Returns:
+        int: numbeer of images in my_folder_path
+    """
 
     if not os.path.isdir(my_folder_path) : 
 
-        print(f'[ERROR] {my_folder_path} is not a directory, cannot count the number of images in n_images_folder()')
-        
+        print(f'[ERROR] {my_folder_path} is not a directory, cannot count the number of images in n_images_folder() function')
         exit
 
-    # assert os.path.isdir(my_folder_path), f'[ERROR] folder {my_folder_path} is not not a directory. Cannot count the number of images in n_images_folder()'
     images = os.listdir(my_folder_path)
     n_images = sum(map(is_image_function, images))
-    return(n_images)
+    return n_images
 
 # ----------------------------------------------------------------------------------------------------
 
@@ -119,6 +143,4 @@ def get_restored_images_paths(input_image:str):
 
 # ----------------------------------------------------------------------------------------------------
 
-
-# ----------------------------------------------------------------------------------------------------
 
