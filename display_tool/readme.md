@@ -6,9 +6,13 @@ all images of `inputs/`. If you store the outputs of the N algorithms in N folde
 page one of the input images and the corresponding outputs of the different algorithmes. <br> <br>
 
 Along with the stripes created, made of the input and the outputs of each algorithm, you can get a zoom in each image to have more details. This is
-done thanks the `--zoom *zooming_option*` argument that is per default set to *center*. What means that it will plot just bellow each image a center
+done thanks the `--zoom *zooming_option* ` argument that is per default set to *center*. What means that it will plot just bellow each image a center
 crop of the images. <br> <br>
 
-Here comes an illustration of the overall operating of **display_tool** : <br>
+Here comes an illustration of the overall operating of **display_tool** : <br><br>
+
+<p align="center">
+<img src="./illustrations/display_tool.png" width="450">
+</p>
 
 # How to use display_tool 📝
