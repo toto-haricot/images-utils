@@ -1,5 +1,6 @@
 # --------------- IMPORTS ----------------------------------------------------------------------------
 
+import os
 import cv2
 
 import numpy as np
@@ -46,5 +47,36 @@ def ycbcr_to_rgb(image_ycbcr : np.array):
 
     return image_rgb.astype(int)
 
-# --------------- IMAGE EDITING -----------------------------------------------------------------------
+# --------------- FILE MODIFICATIONS -----------------------------------------------------------------
+
+def is_image(an_image:str):
+    """This function will return True / False if the path to image given in argument represent an image
+
+    Args:
+        an_image (str): _description_
+
+    Returns:
+        _type_: _description_
+    """
+
+    extensions = ['.png', '.jpg', '.JPG', '.jpeg', '.JPEG']
+
+    if os.path.splitext(an_image)[1] in extensions:
+        return an_image
+    return False
+
+def remove_not_image(images_list:str, print_n_removed=False):
+    """This function will parse all elements in a given list and keep only strings that refer to an image
+
+    Args:
+        images_list (str): _description_
+        print_n_removed (bool, optional): _description_. Defaults to False.
+    """
+    is_an_images_list = list(map(is_image, images_list))
+    all_images_list = [i for i in is_an_images_list if i != False]
+    if print_n_removed: 
+        n_images_removed = len(is_an_images_list) - len(all_images_list)
+        print(f'{n_images_removed} file(s) detected as not image')
+    return(all_images_list)
+
 
