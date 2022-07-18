@@ -15,13 +15,15 @@ from functions import *
 
 parser = argparse.ArgumentParser()
 
-parser.add_argument('--inputs_folder', type=str, required=True, help='path to folder with input images')
-parser.add_argument('--output_pdf_path', type=str, required=True, help='path to folder to write PDFs')
+parser.add_argument('--inputs_folder', type=str, required=True, help="path to folder with input images")
+parser.add_argument('--output_pdf_path', type=str, required=True, help="path to folder to write PDFs")
+parser.add_argument('--zoom', default="center", required=True, help="way to crop the images to get the zoom")
 
 args = parser.parse_args()
 
 inputs_folder_path = args.inputs_folder
 output_path = args.output_pdf_path
+zoom_option = args.zoom
 
 # ---------- COUNT NUMBER OF RESULTS FOLDERS  --------------------------------------------------------
 
