@@ -1,3 +1,13 @@
+"""This python script is some sort of the main file. It enables to launch the display tool on an input folder if 
+output folders are saved at the same location by calling functions from other files. 
+
+The command line should be such as: 
+
+    python display_tool.py --inputs_folder path/to/inputs --output_pdf_path path/to/where/writting/the/pdfs 
+    --zoom "any_option"
+
+"""
+
 # ---------- IMPORTS ---------------------------------------------------------------------------------
 
 import os
@@ -21,22 +31,28 @@ parser.add_argument('--zoom', default="center", required=True, help="way to crop
 
 args = parser.parse_args()
 
+global inputs_folder_path, output_path, zoom_option
+
 inputs_folder_path = args.inputs_folder
 output_path = args.output_pdf_path
 zoom_option = args.zoom
 
-# ---------- COUNT NUMBER OF RESULTS FOLDERS  --------------------------------------------------------
+# ---------- LAUNCHING MAIN  -------------------------------------------------------------------------
 
-n_folders, neighbors, n_images = neighbor_dirs(inputs_folder_path, print_warning=True)
+if __name__ == "__main__": 
 
-input_images = os.listdir(inputs_folder_path)
+    # global variables
+    global n_folders, neighbors, n_images
 
-print(f'Number of restored folder : {n_folders} \n')
-print(f'Restored folders are located at : {neighbors} \n')
-print(f'Each folder has {n_images} images \n')
+    n_folders, neighbors, n_images = neighbor_dirs(inputs_folder_path, print_warning=True)
 
-# ---------- LAUNCHING THE PDF CREATION --------------------------------------------------------------
+    input_images = os.listdir(inputs_folder_path)
 
-print(f'inputs folder : {inputs_folder_path}')
+    print(f'Launching display_tool on input folder {inputs_folder_path}\n')
+    print(f'\tNumber of restored folder : {n_folders}')
+    print(f'\tRestored folders are located at : {neighbors}')
+    print(f'\tEach folder has {n_images} images \n')
+    print(f'--------------------------------------------------\n')
 
-plot_stripes_into_pdf(inputs_folder_path, pdf_output_path=output_path)
+    # PDFs creation
+    plot_stripes_into_pdf(inputs_folder_path, pdf_output_path=output_path)

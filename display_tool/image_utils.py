@@ -1,9 +1,25 @@
+"""This module provides image oriented useful functions such as cropping, zooming and plotting information on a plot
+"""
+
+# ---------- IMPORTS ---------------------------------------------------------------------------------
+
 import os
 import cv2
 
-# ----------------------------------------------------------------------------------------------------
+# ---------- CENTRAL CROP FUNCTION -------------------------------------------------------------------
 
 def central_crop(image, width_max:int, height_max:int):
+    """This function will check is an image already read and given in a numpy array has a width and height in between 
+    some limits width_max and height_max. If the image doesn't fit in this range, it is then cropped center on middle
+
+    Args:
+        image (np.array): input numpy array
+        width_max (int): maximum of pixels / columns in the image
+        height_max (int): maximum of pixels / rows in the image
+
+    Returns:
+        numpy.array : central cropped version of the image is limits are exceeded or input array otherwise
+    """
 
     width_image, height_image, channels = image.shape
 
@@ -38,12 +54,25 @@ def central_crop(image, width_max:int, height_max:int):
 
     return(image)
 
-# ----------------------------------------------------------------------------------------------------
+# ---------- TEXT ON AN IMAGE ------------------------------------------------------------------------
     
-def draw_text_on_image(img, text, pos=(20,20), 
-                       font=cv2.FONT_HERSHEY_DUPLEX, font_scale=2, font_thickness=2,
+def draw_text_on_image(img, text:str, pos=(20,20), font=cv2.FONT_HERSHEY_DUPLEX, font_scale=2, font_thickness=2,
                        text_color=(0,255,0), text_color_bg=(255,255,255)):
-    
+    """Function to write a title on a uniform background on a given image
+
+    Args:
+        img (np.array): input image
+        text (str): string to write on the image
+        pos (tuple, optional): coordinates of the center of the title. Defaults to (20,20)
+        font (_type_, optional): open-cv font type. Defaults to cv2.FONT_HERSHEY_DUPLEX
+        font_scale (int, optional): open-cv font scale. Defaults to 2
+        font_thickness (int, optional): Defaults to 2
+        text_color (tuple, optional): color of the text. Defaults to (0,255,0)
+        text_color_bg (tuple, optional): color of the background. Defaults to (255,255,255)
+
+    Returns:
+        tuple: open-cv size of the title for the given set of parameters
+    """
     x, y = pos
     text_size, _ = cv2.getTextSize(text, font, font_scale, font_thickness)
     text_w, text_h = text_size
@@ -52,18 +81,18 @@ def draw_text_on_image(img, text, pos=(20,20),
 
     return text_size
             
-# ----------------------------------------------------------------------------------------------------
+# ---------- ZOOMING CROP FUNCTION -------------------------------------------------------------------
 
-def zooming_crop(img, crop_style='center'):
-    """This function returns the crop of an image as a numpy array
+def zooming_crop(img, crop_style:str='center'):
+    """This function returns the crop of an image as a numpy array to create a zoom
 
-    Parameters:
-    img (np.array): The image that we want to crop
-    crop_style (str): How do we want to crop the image. Possible values are 'center', 'upper_left', 'upper_right',
-    'bottom_left', 'bottom_right', 'manual', 'automatic'
+    Args:
+        img (np.array): the image that we want to crop
+        crop_style (str): how do we want to crop the image. Possible values are 'center', 'upper_left', 'upper_right',
+                          'bottom_left', 'bottom_right', 'manual', 'automatic'
 
     Returns:
-    np.array: 3D array that plots the cropped image
+        np.array: numpy array that plots the cropped image
 
     """
 

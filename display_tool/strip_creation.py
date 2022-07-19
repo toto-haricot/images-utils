@@ -1,24 +1,44 @@
+"""This module presents the core function of the display tool. create_a_strip() will generate a numpy array composed of 
+the input images along with the corresponding outputs and the zooms. Then plot_stripes_into_pdf() will iteratively write
+those arrays inside the PDFs
+"""
+
+# ---------- IMPORTS ---------------------------------------------------------------------------------
+
 import os
 import cv2
 
 import numpy as np
-# import matplotlib.pyplot as plt
 
 from itertools import groupby
 from image_utils import central_crop, draw_text_on_image, zooming_crop
-from functions import * #all_equal, is_image, false_if_not_image, n_images_folder, delete_none_image, neighbor_dirs, get_restored_images_paths, 
+from display_tool import *
+from functions import * 
 
-def create_a_strip(an_image_path:str, display_info=True):
-    '''For a given input image path this function return an array'''
+# ---------- FUNCTION TO CREATE A STRIP ---------------------------------------------------------
+
+def create_a_strip(an_image_path:str, display_info=False):
+    """This function will create a grand numpy array that contains an input image along with the corresponding outputs
+    side to side. Just bellow each image a zoom is plotted. 
+
+    Args:
+        an_image_path (str): path to an image for inputs folder
+        display_info (bool, optional): if you want all information on the way. Defaults to False.
+
+    Returns:
+        np.array: array containing all images and zooms. Ready to be saved into a PDF page
+    """
+
+
     bg_color = (255,255,255)
     titles_color = (0,0,0)
 
     if display_info: print(f'Start building strip for image : {an_image_path} \n')
     
-    output_images_path = get_restored_images_paths(an_image_path)
+    output_image_paths = get_output_images_paths(an_image_path, display_tool.output_folders)
 
     #if no matching version is found we return False
-    if len(output_images_path) == 0:
+    if len(output_image_paths) == 0:
         print(f'No matching version found for image {os.path.basename(an_image_path)}\n')
         return None
 
@@ -31,7 +51,7 @@ def create_a_strip(an_image_path:str, display_info=True):
     folders_name = [os.path.basename(os.path.dirname(an_image_path))]
 
     # list filling based on output_images_path
-    for an_output_path in output_images_path:
+    for an_output_path in output_image_paths:
 
         img = cv2.imread(an_output_path)
         images.append(img)
@@ -54,7 +74,7 @@ def create_a_strip(an_image_path:str, display_info=True):
                 shapes[i+1] = shapes[0]
 
 
-    # we check if all images have the same lengths 
+    # we check if all images have the same lengths and crop if necessary
     if not all_equal(shapes):
 
         if display_info: print('Not all shapes are equal, time for some central cropping... \n')
