@@ -1,3 +1,6 @@
+    """This python module define some useful functions that can be used in different projects. 
+    """
+
 # --------------- IMPORTS ----------------------------------------------------------------------------
 
 import os
@@ -50,13 +53,13 @@ def ycbcr_to_rgb(image_ycbcr : np.array):
 # --------------- FILE MODIFICATIONS -----------------------------------------------------------------
 
 def is_image(an_image:str):
-    """This function will return True / False if the path to image given in argument represent an image
+    """This function will return False or a string if the path to image given in argument represent an image
 
     Args:
-        an_image (str): _description_
+        an_image (str): The basename or path to a file, supposedly an image
 
     Returns:
-        _type_: _description_
+        _type_: Either a string with the input image name or False if the file is not an image
     """
 
     extensions = ['.png', '.jpg', '.JPG', '.jpeg', '.JPEG']
@@ -71,6 +74,9 @@ def remove_not_image(images_list:str, print_n_removed=False):
     Args:
         images_list (str): _description_
         print_n_removed (bool, optional): _description_. Defaults to False.
+
+    Returns:
+        list: New list extracted from input images list with only the image files
     """
     is_an_images_list = list(map(is_image, images_list))
     all_images_list = [i for i in is_an_images_list if i != False]
