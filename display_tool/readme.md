@@ -16,3 +16,11 @@ Here comes an illustration of the overall operating of **display_tool** : <br><b
 </p>
 
 # How to use display_tool 📝
+
+First of all you should get the input and outputs folders at the same location in the same folder, to have something like this :
+
+Then you can call the display_tool.py file from the command line :
+
+`python display_tool.py --inputs_folder *path/to/folder/with/inputs* --output_pdf_path *where/you/want/the/pdf/written* --zoom *"center"* ` </br></br>
+
+<u>Note</u> : For the moment the only zoom option is center, but other options will soon be available.
