@@ -22,7 +22,7 @@ In this repository you will find the following python scripts :
 `python crop_select.py --image_path *path/to/image*` </br></br>
 
 
-- 📝 **dataset_cleaning.py** : this script will look at all images in the given *folder_path* and rename all images with the following standard `foldername_000XX.png`. The script also outputs a csv file that contains all images former names and new ones along with the images sizes. 
+- 📝 **dataset_cleaning.py** : this script will look at all images in the given *folder_path* and rename all images with the following standard **foldername_000XX.png**. The script also outputs a csv file that contains all images former names and new ones along with the images sizes. 
 
 `python dataset_cleaning.py --folder_path *path/to/folder*` </br></br>
 
