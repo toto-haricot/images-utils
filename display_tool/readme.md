@@ -1,7 +1,7 @@
-# Was is the display_tool 💡
+# What is `display_tool` 💡
 
-This repository was created to help analysis the results of a benchmark between different algorithms dealing with images. Imagine you have 200
-images in the folder `inputs/` and you want to compare the outputs that different models, let's say `algo1`, `algo2`... `algoN` give when ran on
+This repository was created to help the results analysis of a benchmark between different algorithms dealing with images. Imagine you have 200
+images in the folder `inputs/` and you want to compare the outputs that different models, let's say `algo1`, `algo2`... `algoN` give on
 all images of `inputs/`. If you store the outputs of the N algorithms in N folders, the **display_tool** will create some PDFs that contain on each
 page one of the input images and the corresponding outputs of the different algorithmes. <br> <br>
 
