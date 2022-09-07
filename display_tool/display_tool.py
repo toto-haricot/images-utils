@@ -1,5 +1,5 @@
 """This python script is some sort of the main file. It enables to launch the display tool on an input folder if 
-output folders are saved at the same location by calling functions from other files. 
+output folders are saved at the same location by calling functions from other files.
 
 The command line should be such as: 
 
