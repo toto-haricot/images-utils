@@ -5,6 +5,9 @@
 import os
 import cv2
 import tqdm
+import argparse
+
+import numpy as np
 
 
 # ------------------------------------------------------------------------------------------
@@ -16,10 +19,10 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--input_folder', type=str, required=True, help="path to folder with bmp images")
 parser.add_argument('--output_folder', type=str, required=True, help="path to folder to save png images")
 
-agrs = parser.parse_args()
+args = parser.parse_args()
 
-input_folder = args.folder_bmp
-output_folder = args.folder_png
+input_folder = args.input_folder
+output_folder = args.output_folder
 
 image_extensions = ['.png', '.jpg', '.JPG', '.jpeg', '.JPEG']
 
