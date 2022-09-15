@@ -7,7 +7,8 @@
 
 import os
 import cv2
-import argpase
+import tqdm
+import argparse
 
 # ------------------------------------------------------------------------------------------
 # ----- CONVERSION FUNCTION ----------------------------------------------------------------
@@ -20,15 +21,15 @@ def conversion_bmp_to_png(input_folder:str, output_folder:str):
     if output_folder is None: raise Exception("[ERROR] Must input a folder path to save images")
 
     # converting images
-    for an_image in os.listdir(input_folder):
+    for an_image in tqdm.tqdm(os.listdir(input_folder)):
 
         an_image_bn, an_image_ext = os.path.splitext(an_image)
 
-        if an_image_ext == '.bmp': 
+        if an_image_ext in ['.bmp', '.BMP']: 
             image = cv2.imread(os.path.join(input_folder, an_image))
             output_path = os.path.join(output_folder, an_image_bn + '.png')
-            if cv2.imwrite(output_path, image): 
-                print(f'{an_image} successfuly converted to png and saved to all_images_png/\n')
+            if not cv2.imwrite(output_path, image): 
+                print(f'error with saving {an_image}\n')
 
     print(f"Images from {input_folder} converted to .png and saved in {output_folder}")
 
@@ -44,10 +45,10 @@ if __name__ == '__main__':
     parser.add_argument('--folder_bmp', type=str, required=True, help="path to folder with bmp images")
     parser.add_argument('--folder_png', type=str, required=True, help="path to folder to save png images")
 
-    agrs = parser.parse_args()
+    args = parser.parse_args()
 
     folder_bmp = args.folder_bmp
     folder_png = args.folder_png
 
     # calling conversion function
-    conversion_bmp_to_png()
+    conversion_bmp_to_png(input_folder=folder_bmp, output_folder=folder_png)
